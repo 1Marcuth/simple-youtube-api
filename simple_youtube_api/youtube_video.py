@@ -137,7 +137,7 @@ class YouTubeVideo(Video):
         """
         if rating in ["like", "dislike", "none"]:
             request = self.channel.videos().rate(
-                id="Ks-_Mh1QhMc", rating=rating
+                id=self.id, rating=rating
             )
             request.execute()
         else:
