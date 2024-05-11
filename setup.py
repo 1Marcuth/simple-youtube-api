@@ -81,7 +81,9 @@ doc_reqs = [
 extra_reqs = {"doc": doc_reqs, "test": test_reqs}
 
 for key, value in extra_reqs.items():
-    if not isinstance(value, (list, str)):
+    if isinstance(value, str):
+        extra_reqs[key] = [value]
+    elif isinstance(value, list):
         extra_reqs[key] = list(map(str, value))
 
 with open("README.rst", "r", "utf-8") as fh:
@@ -110,5 +112,4 @@ setup(
     ],
     install_requires=requires,
     tests_require=test_reqs,
-    extras_require=extra_reqs,
 )
