@@ -80,6 +80,10 @@ doc_reqs = [
 
 extra_reqs = {"doc": doc_reqs, "test": test_reqs}
 
+for key, value in extra_reqs.items():
+    if not isinstance(value, (list, str)):
+        extra_reqs[key] = list(map(str, value))
+
 with open("README.rst", "r", "utf-8") as fh:
     long_description = fh.read()
 
